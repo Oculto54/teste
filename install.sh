@@ -156,8 +156,20 @@ get_real_home() {
 backup_dotfiles() {
     local home
     home=$(get_real_home)
-    local backup_dir="$home/.dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
     
+    # Validate home directory
+    if [[ -z "$home" ]]; then
+        err "Could not determine home directory"
+        exit 1
+    fi
+    
+    if [[ ! -d "$home" ]]; then
+        err "Home directory does not exist: $home"
+        exit 1
+    fi
+    
+    local backup_dir="$home/.dotfiles_backup_$(date +%Y%m%d_%H%M%S)"
+
     msg "Backing up existing dotfiles..."
     
     local files_to_backup=(".p10k.zsh" ".nanorc" ".zshrc")
@@ -168,7 +180,7 @@ backup_dotfiles() {
     for file in "${files_to_backup[@]}"; do
         if [[ -f "$home/$file" ]]; then
             cp -p "$home/$file" "$backup_dir/$file"
-            ((backed_up++))
+            backed_up=$((backed_up + 1))
             msg "Backed up: $file"
         fi
     done
