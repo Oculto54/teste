@@ -344,7 +344,7 @@ create_root_symlinks() {
     for file in "${files[@]}"; do
         if [[ -f "$user_home/$file" ]]; then
             ln -sf "$user_home/$file" "/root/$file"
-            ((created++))
+            created=$((created + 1))
             msg "Created symlink: /root/$file -> $user_home/$file"
         fi
     done
@@ -435,7 +435,7 @@ verify_installation() {
             msg "✓ $pkg installed"
         else
             err "✗ $pkg not found"
-            ((errors++))
+            errors=$((errors + 1))
         fi
     done
     
@@ -445,7 +445,7 @@ verify_installation() {
             msg "✓ $file installed"
         else
             err "✗ $file not found"
-            ((errors++))
+            errors=$((errors + 1))
         fi
     done
     
