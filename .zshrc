@@ -76,23 +76,23 @@ alias diff='diff --color=auto 2>/dev/null || diff'
 if [[ "$OSTYPE" == "darwin"* ]]; then
   alias ls='ls -G'
   alias ll='ls -lahG'
-  alias l='ls -lhG'
-  alias la='ls -laG'
-  alias update='brew update && brew upgrade'
+  #alias l='ls -lhG'
+  #alias la='ls -laG'
+  alias update='brew update && brew upgrade && zinit update --all && zinit self-update --all && brew cleanup'
 else
   alias ls='ls --color=auto'
   alias ll='ls --color=auto -lah'
-  alias l='ls --color=auto -lh'
-  alias la='ls --color=auto -la'
+  #alias l='ls --color=auto -lh'
+  #alias la='ls --color=auto -la'
   # Only create update alias if apt exists
-  command -v apt &>/dev/null && alias update='sudo apt update && sudo apt upgrade -y'
+  command -v apt &>/dev/null && alias update='sudo apt update && sudo apt upgrade -y && zinit update --all && zinit self-update --all && sudo apt autoremove && sudo apt autoclean'
 fi
 
 # Directory navigation
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias -- -='cd -'
+#alias -- -='cd -'
 
 # =============================================================================
 # iTerm2 integration (source if present)
@@ -139,6 +139,5 @@ zinit cdreplay -q
 # Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-
 
 # zprof

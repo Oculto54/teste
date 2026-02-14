@@ -1,0 +1,7 @@
+# include "/opt/homebrew/share/nano/*.nanorc"
+#   
+set linenumbers
+set autoindent
+set mouse
+set tabsize 2
+
