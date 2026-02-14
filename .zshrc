@@ -12,13 +12,13 @@ fi
 # =============================================================================
 # Zsh Options
 # =============================================================================
-setopt autocd              # Change dir without typing cd
-setopt extendedglob        # Use extended globbing
+# setopt autocd              # Change dir without typing cd
+# setopt extendedglob        # Use extended globbing
 setopt noclobber           # Prevent overwriting files with >
 setopt correct             # Suggest corrections for typos
 setopt nobeep              # Disable beep
-setopt autopushd           # Push old dir to stack on cd
-setopt pushdignoredups     # Don't push duplicate dirs to stack
+# setopt autopushd           # Push old dir to stack on cd
+# setopt pushdignoredups     # Don't push duplicate dirs to stack
 
 # =============================================================================
 # History
@@ -54,7 +54,8 @@ export LS_COLORS="di=1;34:ln=1;36:so=1;35:pi=33:ex=1;32:bd=33;47:cd=33;47:su=37;
 # Environment
 # =============================================================================
 export PAGER="less"
-export LESS="-R -i -g -c -W"
+# export LESS="-R -i -g -c -W"
+export LESS="-R -i -g -W"
 export LANG="${LANG:-en_US.UTF-8}"
 export LC_ALL="${LC_ALL:-en_US.UTF-8}"
 
